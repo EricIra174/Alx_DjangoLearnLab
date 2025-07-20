@@ -1,5 +1,6 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.decorators import permission_required
+from django.views.generic.detail import DetailView
 from .models import Library  # ✅ includes Library
 from .forms import BookForm  # Assuming you have a form
 
