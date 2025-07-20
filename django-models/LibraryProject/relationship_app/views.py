@@ -37,3 +37,14 @@ def delete_book(request, pk):
 def library_detail(request, pk):
     library = get_object_or_404(Library, pk=pk)
     return render(request, "relationship_app/library_detail.html", {"library": library})
+
+def register(request):
+    if request.method == 'POST':
+        form = UserCreationForm(request.POST)
+        if form.is_valid():
+            user = form.save()
+            login(request, user)  # Log in the user after registration
+            return redirect('book_list')  # Or any other page after registration
+    else:
+        form = UserCreationForm()
+    return render(request, 'relationship_app/register.html', {'form': form})
