@@ -7,6 +7,15 @@ from django.views.generic.detail import DetailView
 from .models import Library  # ✅ includes Library
 from .forms import BookForm  # Assuming you have a form
 
+def is_admin(user):
+    return hasattr(user, 'userprofile') and user.userprofile.role == 'Admin'
+
+def is_member(user):
+    return hasattr(user, 'userprofile') and user.userprofile.role == 'Member'
+
+def is_librarian(user):
+    return hasattr(user, 'userprofile') and user.userprofile.role == 'Librarian'  # Add this role if needed
+
 @permission_required('relationship_app.can_add_book', raise_exception=True)
 def add_book(request):
     if request.method == 'POST':
