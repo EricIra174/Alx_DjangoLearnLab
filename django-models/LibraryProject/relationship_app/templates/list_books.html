@@ -1,14 +1,16 @@
+<!-- relationship_app/templates/relationship_app/list_books.html -->
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>List of Books</title>
+    <title>Book List</title>
 </head>
 <body>
-    <h1>Books Available:</h1>
+    <h1>List of Books</h1>
     <ul>
         {% for book in books %}
-        <li>{{ book.title }} by {{ book.author.name }}</li>
+            <li>{{ book.title }} by {{ book.author }}</li>
+        {% empty %}
+            <li>No books available.</li>
         {% endfor %}
     </ul>
 </body>
