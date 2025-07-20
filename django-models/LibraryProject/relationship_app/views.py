@@ -12,7 +12,7 @@ def add_book(request):
             return redirect('book_list')
     else:
         form = BookForm()
-    return render(request, "relationship_app/book_form.html", {'form': form})  # ✅ fixed template & context
+    return render(request, "relationship_app/list_books.html", Book.objects.all()  # ✅ fixed template & context
 
 @permission_required('relationship_app.can_change_book', raise_exception=True)
 def edit_book(request, pk):
