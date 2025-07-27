@@ -1,0 +1,13 @@
+<!-- relationship_app/templates/relationship_app/register.html -->
+<!DOCTYPE html>
+<html>
+<head><title>Register</title></head>
+<body>
+    <h2>Register</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Sign up</button>
+    </form>
+</body>
+</html>
