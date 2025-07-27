@@ -1,4 +1,12 @@
 from django.db import models
+from django.contrib.auth.models import AbstractUser
+
+class CustomUser(AbstractUser):
+    date_of_birth = models.DateField(null=True, blank=True)
+    profile_photo = models.ImageField(upload_to='profile_photos/', null=True, blank=True)
+
+    def __str__(self):
+        return self.username
 
 class Book(models.Model):
     title = models.CharField(max_length=255)
@@ -14,13 +22,3 @@ class Book(models.Model):
 
     def __str__(self):
         return self.title
-from django.db import models
-from django.contrib.auth.models import User
-
-class UserProfile(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
-    # Add other fields as needed
-    bio = models.TextField(blank=True)
-
-    def __str__(self):
-        return self.user.username
