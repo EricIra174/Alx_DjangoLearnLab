@@ -1,11 +1,7 @@
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
-from .models import ExampleModel, CustomUser
+from .models import ExampleModel, CustomUser, Book
 
-# Register ExampleModel
-admin.site.register(CustomUser, CustomUserAdmin)
-
-# Custom admin for CustomUser
 class CustomUserAdmin(UserAdmin):
     model = CustomUser
     fieldsets = UserAdmin.fieldsets + (
@@ -15,5 +11,6 @@ class CustomUserAdmin(UserAdmin):
         (None, {'fields': ('date_of_birth', 'profile_photo')}),
     )
 
-# Register CustomUser with the custom admin
+admin.site.register(ExampleModel)
 admin.site.register(CustomUser, CustomUserAdmin)
+admin.site.register(Book)
