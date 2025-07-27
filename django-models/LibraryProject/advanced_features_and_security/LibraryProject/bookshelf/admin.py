@@ -3,7 +3,7 @@ from django.contrib.auth.admin import UserAdmin
 from .models import ExampleModel, CustomUser
 
 # Register ExampleModel
-admin.site.register(ExampleModel)
+admin.site.register(CustomUser, CustomUserAdmin)
 
 # Custom admin for CustomUser
 class CustomUserAdmin(UserAdmin):
@@ -16,4 +16,4 @@ class CustomUserAdmin(UserAdmin):
     )
 
 # Register CustomUser with the custom admin
-"admin.site.register(CustomUser, CustomUserAdmin)"
+admin.site.register(CustomUser, CustomUserAdmin)
