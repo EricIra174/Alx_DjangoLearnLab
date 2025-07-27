@@ -1,6 +1,3 @@
-from django.contrib import admin
-from django.contrib.auth.admin import UserAdmin
-from .models import ExampleModel, CustomUser
 from django.db import models
 from django.contrib.auth.models import AbstractUser, BaseUserManager
 
@@ -23,16 +20,6 @@ class CustomUserManager(BaseUserManager):
         extra_fields.setdefault("is_staff", True)
         extra_fields.setdefault("is_superuser", True)
 
-    class CustomUserAdmin(UserAdmin):
-    model = CustomUser
-    fieldsets = UserAdmin.fieldsets + (
-        (None, {'fields': ('date_of_birth', 'profile_photo')}),
-    )
-    add_fieldsets = UserAdmin.add_fieldsets + (
-        (None, {'fields': ('date_of_birth', 'profile_photo')}),
-    )
-
-
         if extra_fields.get("is_staff") is not True:
             raise ValueError("Superuser must have is_staff=True.")
         if extra_fields.get("is_superuser") is not True:
@@ -45,9 +32,6 @@ class CustomUser(AbstractUser):
     email = models.EmailField(unique=True)
     date_of_birth = models.DateField(null=True, blank=True)
     profile_photo = models.ImageField(upload_to='profile_photos/', null=True, blank=True)
-
-admin.site.register(ExampleModel)
-admin.site.register(CustomUser, CustomUserAdmin)
 
     objects = CustomUserManager()
 
