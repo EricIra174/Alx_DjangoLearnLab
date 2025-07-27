@@ -32,8 +32,6 @@ class CustomUserManager(BaseUserManager):
         (None, {'fields': ('date_of_birth', 'profile_photo')}),
     )
 
-admin.site.register(ExampleModel)
-admin.site.register(CustomUser, CustomUserAdmin)
 
         if extra_fields.get("is_staff") is not True:
             raise ValueError("Superuser must have is_staff=True.")
@@ -47,6 +45,9 @@ class CustomUser(AbstractUser):
     email = models.EmailField(unique=True)
     date_of_birth = models.DateField(null=True, blank=True)
     profile_photo = models.ImageField(upload_to='profile_photos/', null=True, blank=True)
+
+admin.site.register(ExampleModel)
+admin.site.register(CustomUser, CustomUserAdmin)
 
     objects = CustomUserManager()
 
