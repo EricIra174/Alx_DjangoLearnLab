@@ -1,16 +1,14 @@
-from django.contrib import admin
-from django.contrib.auth.admin import UserAdmin
-from .models import ExampleModel, CustomUser, Book
+# Book model with custom permissions
+class Book(models.Model):
+    title = models.CharField(max_length=200)
+    author = models.CharField(max_length=100)
+    published_date = models.DateField()
 
-class CustomUserAdmin(UserAdmin):
-    model = CustomUser
-    fieldsets = UserAdmin.fieldsets + (
-        (None, {'fields': ('date_of_birth', 'profile_photo')}),
-    )
-    add_fieldsets = UserAdmin.add_fieldsets + (
-        (None, {'fields': ('date_of_birth', 'profile_photo')}),
-    )
+    class Meta:
+        permissions = [
+            ("can_create", "Can create a book"),
+            ("can_delete", "Can delete a book"),
+        ]
 
-admin.site.register(ExampleModel)
-admin.site.register(CustomUser, CustomUserAdmin)
-admin.site.register(Book)
+    def __str__(self):
+        return self.title
