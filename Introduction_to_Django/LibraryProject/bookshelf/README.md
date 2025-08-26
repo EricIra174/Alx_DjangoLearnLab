@@ -1,0 +1,1 @@
+this is the week 10 alx project that took us on an explorative journey of django API, how to start a project, various files and what they do in a django project and what actually is an API and benefits of using them
