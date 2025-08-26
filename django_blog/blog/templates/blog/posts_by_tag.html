@@ -1,0 +1,7 @@
+<h2>Posts tagged with "{{ tag.name }}"</h2>
+{% for post in posts %}
+<h3>{{ post.title }}</h3>
+<p>{{ post.content|truncatewords:30 }}</p>
+{% empty %}
+<p>No posts with this tag.</p>
+{% endfor %}
