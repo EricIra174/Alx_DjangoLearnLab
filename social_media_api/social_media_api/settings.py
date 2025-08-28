@@ -24,9 +24,14 @@ SECRET_KEY = "django-insecure-8k-dzf(hfwwbm43me^zq7#954vs&d0(^u!+l)klm95g3#($nw)
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
+ALLOWED_HOSTS = ["ericira.pythonanywhere.com"]
+CSRF_TRUSTED_ORIGINS = ["https://ericira.pythonanywhere.com"]
 
-ALLOWED_HOSTS = ['SECURE_BROWSER_XSS_FILTER', 'X_FRAME_OPTIONS, SECURE_CONTENT_TYPE_NOSNIFF', 'SECURE_SSL_REDIRECT']
+from pathlib import Path
+BASE_DIR = Path(__file__).resolve().parent.parent
 
+STATIC_URL = "static/"
+STATIC_ROOT = BASE_DIR / "staticfiles"
 
 # Application definition
 
@@ -137,3 +142,4 @@ REST_FRAMEWORK = {
     ],
 }
 AUTH_USER_MODEL = "accounts.CustomUser"
+
