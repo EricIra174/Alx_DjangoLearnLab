@@ -23,6 +23,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = "django-insecure-8k-dzf(hfwwbm43me^zq7#954vs&d0(^u!+l)klm95g3#($nw)"
 
 # SECURITY WARNING: don't run with debug turned on in production!
+import os
 DEBUG = False
 ALLOWED_HOSTS = ["*"]
 CSRF_TRUSTED_ORIGINS = ["https://*.onrender.com"]
@@ -31,7 +32,7 @@ from pathlib import Path
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 STATIC_URL = "static/"
-STATIC_ROOT = BASE_DIR / "staticfiles"
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 # Application definition
 
@@ -143,6 +144,7 @@ REST_FRAMEWORK = {
     ],
 }
 AUTH_USER_MODEL = "accounts.CustomUser"
+
 
 
 
