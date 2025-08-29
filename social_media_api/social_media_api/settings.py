@@ -24,8 +24,8 @@ SECRET_KEY = "django-insecure-8k-dzf(hfwwbm43me^zq7#954vs&d0(^u!+l)klm95g3#($nw)
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
-ALLOWED_HOSTS = ["ericira.pythonanywhere.com"]
-CSRF_TRUSTED_ORIGINS = ["https://ericira.pythonanywhere.com"]
+ALLOWED_HOSTS = ["*"]
+CSRF_TRUSTED_ORIGINS = ["https://*.onrender.com"]
 
 from pathlib import Path
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -143,5 +143,6 @@ REST_FRAMEWORK = {
     ],
 }
 AUTH_USER_MODEL = "accounts.CustomUser"
+
 
 
